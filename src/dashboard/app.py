@@ -407,7 +407,7 @@ if not season_drivers.empty:
 
             st.dataframe(
                 leaderboard,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True,
                 column_config={
                     "Pace rank": st.column_config.NumberColumn(format="%d"),
@@ -499,7 +499,7 @@ if not season_drivers.empty:
             # Keep Plotly Express' generated hover labels so the
             # pace_category column is shown reliably for every bar.
             fig.update_traces(marker_line_width=0)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
             st.info(
                 "Interpretation: negative values indicate faster-than-reference "
@@ -512,7 +512,7 @@ if not season_drivers.empty:
         with st.expander("View all raw season driver metrics"):
             st.dataframe(
                 clean_display_dataframe(season_drivers),
-                use_container_width=True,
+                width="stretch",
                 hide_index=True,
             )
     else:
@@ -523,7 +523,7 @@ if not season_drivers.empty:
         )
         st.dataframe(
             season_drivers,
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 else:
@@ -660,7 +660,7 @@ if not season_teams.empty:
 
             st.dataframe(
                 team_leaderboard,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True,
                 column_config={
                     "Pace rank": st.column_config.NumberColumn(format="%d"),
@@ -760,7 +760,7 @@ if not season_teams.empty:
             )
 
             team_fig.update_traces(marker_line_width=0)
-            st.plotly_chart(team_fig, use_container_width=True)
+            st.plotly_chart(team_fig, width="stretch")
 
             st.info(
                 "Interpretation: negative values indicate faster-than-reference "
@@ -773,7 +773,7 @@ if not season_teams.empty:
         with st.expander("View raw season team metrics"):
             st.dataframe(
                 clean_display_dataframe(season_teams),
-                use_container_width=True,
+                width="stretch",
                 hide_index=True,
             )
 
@@ -785,7 +785,7 @@ if not season_teams.empty:
         )
         st.dataframe(
             season_teams,
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 else:
@@ -891,7 +891,7 @@ if not season_races.empty:
     )
     st.dataframe(
         display_races,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         column_config={
             "Valid lap records (%)": st.column_config.NumberColumn(format="%.1f%%"),
@@ -934,7 +934,7 @@ if not season_races.empty:
                     height=420,
                     margin=dict(b=100),
                 )
-                st.plotly_chart(quality_fig, use_container_width=True)
+                st.plotly_chart(quality_fig, width="stretch")
 
     if "driver_count" in race_analysis.columns:
         with chart_col2:
@@ -962,12 +962,12 @@ if not season_races.empty:
                     height=420,
                     margin=dict(b=100),
                 )
-                st.plotly_chart(driver_fig, use_container_width=True)
+                st.plotly_chart(driver_fig, width="stretch")
 
     with st.expander("View raw season race data"):
         st.dataframe(
             clean_display_dataframe(season_races),
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -1036,7 +1036,7 @@ if not race_drivers.empty:
 
     st.dataframe(
         clean_display_dataframe(leaderboard),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -1066,7 +1066,7 @@ if not race_drivers.empty:
             yaxis_title="Average lap time (seconds)",
             hovermode="closest",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 else:
     st.warning("Race driver data is unavailable.")
@@ -1120,11 +1120,11 @@ if not race_teams.empty:
             showlegend=False,
             hovermode="closest",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.dataframe(
         clean_display_dataframe(race_teams),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 else:
@@ -1188,7 +1188,7 @@ if not race_laps.empty:
             yaxis_title="Lap time (seconds)",
             hovermode="x unified",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         st.caption(
             "The first lap can be slower because of race-start conditions. "
@@ -1197,7 +1197,7 @@ if not race_laps.empty:
 
     st.dataframe(
         clean_display_dataframe(lap_chart_data),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 else:
@@ -1251,7 +1251,7 @@ if not race_drivers.empty and "driver_number" in race_drivers.columns:
 
         st.dataframe(
             clean_display_dataframe(comparison[comparison_columns]),
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -1292,7 +1292,7 @@ if not race_drivers.empty and "driver_number" in race_drivers.columns:
                 yaxis_title="Lap time (seconds)",
                 hovermode="closest",
             )
-            st.plotly_chart(comparison_fig, use_container_width=True)
+            st.plotly_chart(comparison_fig, width="stretch")
 else:
     st.info("Driver comparison is unavailable because driver data is missing.")
 
